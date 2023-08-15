@@ -1,4 +1,6 @@
 import { ButtonStyled } from "./style";
+import { ButtonFormulario } from "./style";
+
 
 interface ButtonProps {
   text: string;

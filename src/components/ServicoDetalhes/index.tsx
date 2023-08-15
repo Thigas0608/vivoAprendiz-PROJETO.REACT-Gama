@@ -1,12 +1,19 @@
 import { useState, FormEventHandler } from "react";
-import Button from "../Button";
+import TextoPrincipal from "../../components/TextoPrincipal";
 import { Form, Container } from "./style";
+import Button from "../Button";
+import ButtonFormulario from "../Button";
 
 
 export default function ServicoDetalhe() {
   return (
     <>
       <Container>
+
+        <TextoPrincipal
+          titulo="Pedido #1232434566"
+          descricao="Detalhes da solicitação          "
+        />
         <Form>
           <label>Nome do cliente</label>
           <input
@@ -45,7 +52,7 @@ export default function ServicoDetalhe() {
           />
 
           <Button text="Voltar" />
-          <Button text="atender solicitação" />
+          <ButtonFormulario text="atender solicitação" />
         </Form>
       </Container>
     </>
