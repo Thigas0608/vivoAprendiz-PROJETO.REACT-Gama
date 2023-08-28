@@ -1,19 +1,12 @@
-import { useState, FormEventHandler } from "react";
-import TextoPrincipal from "../../components/TextoPrincipal";
+import { Link } from "react-router-dom";
 import { Form, Container } from "./style";
 import Button from "../Button";
-import ButtonFormulario from "../Button";
 
 
 export default function ServicoDetalhe() {
   return (
     <>
       <Container>
-
-        <TextoPrincipal
-          titulo="Pedido #1232434566"
-          descricao="Detalhes da solicitação          "
-        />
         <Form>
           <label>Nome do cliente</label>
           <input
@@ -51,8 +44,9 @@ export default function ServicoDetalhe() {
             disabled
           />
 
-          <Button text="Voltar" />
-          <ButtonFormulario text="atender solicitação" />
+          <Link to="/servico"><Button style="cinza" text="Voltar" /></Link>
+          <Link to="/relatorios"><Button style="verdeTranparente" text="atender solicitação" /></Link>
+
         </Form>
       </Container>
     </>

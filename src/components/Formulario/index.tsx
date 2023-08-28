@@ -1,6 +1,7 @@
 import { useState, FormEventHandler } from "react";
 import Button from "../Button";
 import { Form, Container } from "./style";
+import { Link } from "react-router-dom";
 
 
 
@@ -37,7 +38,9 @@ console.log(senha);
           onChange={(e)=> setSenha(e.target.value)}
           />
 
-          <Button text="entrar" />
+          <Link to="/servico"><Button style="" text="entrar" /></Link>
+
+          
         </Form>
       </Container>
     </>

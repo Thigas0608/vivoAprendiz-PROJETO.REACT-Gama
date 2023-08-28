@@ -9,8 +9,18 @@ export const Form = styled.form`
   border-radius: 15px;
   box-shadow: 0px 0px 10px 0px grey;
 
+  label {
+    font-weight: bold;
+  }
+
   input {
     width: 100%;
+    margin-bottom: 15px;
+    margin-top: 10px;
+    height: 33px;
+    border-radius: 5px;
+    padding: 13px;
+    border: 1px solid;
   }
 `;
 

@@ -15,10 +15,10 @@ export default function Header() {
                <Link to="/">Início</Link>
               </li>
               <li>
-              <Link to="/servicos">Serviços</Link>
+              <Link to="/servico">Serviços</Link>
               </li>
               <li>
-              <Link to="/">Relatórios</Link>
+              <Link to="/relatorios">Relatórios</Link>
               </li>
             </ul>
           </Menu>
