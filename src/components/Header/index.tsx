@@ -8,7 +8,6 @@ export default function Header() {
       <HeaderStyled>
         <Container>
           <img src={logoConexos} alt="Logo Conexos" />
-
           <Menu>
             <ul>
               <li>

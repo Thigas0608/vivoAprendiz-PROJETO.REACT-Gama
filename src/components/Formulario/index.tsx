@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Button from "../Button";
 import { Form, Container } from "./style";
 import { serviceFuncionarios, LoginPayload } from "../../services/funcionarios";
@@ -35,11 +35,11 @@ export default function Formulario() {
     }
   };
 
-  const handleSubmit = async (evento) => {
+  const handleSubmit = (evento: { preventDefault: () => void; }) => {
     evento.preventDefault();
 
     // Chame a função assíncrona logar aqui
-    await logar();
+    void logar();
   };
 
   return (
@@ -64,7 +64,7 @@ export default function Formulario() {
 
           {error && <div style={{ color: "red" }}>{error}</div>}
 
-          <Button text="entrar" type="submit" />
+          <Button style="azul" text="Entrar" />
         </Form>
       </Container>
     </>

@@ -1,29 +1,34 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Button from "../Button";
 import { PainelStyled } from "./style";
+import axios from "axios";
 
-function LinhaInfo(
-    cod: number,
-    nome: string,
-    servico: string,
-    data: string,
-    status: string,
-) {
-    return { cod, nome, servico, data, status }
+interface Order {
+    id: number;
+    nome: string;
+    plano: string;
+    data: string;
+    status: string;
 }
 
-const linha = [
-    LinhaInfo(1232434566, 'Joana da Silva', 'Plano 1 - Instalação', '26/06/2023', 'Aguardando agendamento'),
-    LinhaInfo(1232434566, 'Joana da Silva', 'Plano 1 - Instalação', '26/06/2023', 'Aguardando agendamento'),
-    LinhaInfo(1232434566, 'Joana da Silva', 'Plano 1 - Instalação', '26/06/2023', 'Aguardando agendamento'),
-    LinhaInfo(1232434566, 'Joana da Silva', 'Plano 1 - Instalação', '26/06/2023', 'Aguardando agendamento'),
-]
-
 export default function Tabela() {
+    const [linha, setLinha] = useState<Order[]>([]);
+    useEffect(() => {
+        axios
+            .get<Order[]>("http://localhost:3000/ordens") // Adicione a tipagem aqui
+            .then((response) => {
+                setLinha(response.data);
+            })
+            .catch((error) => {
+                console.error("Erro ao buscar os dados da API:", error);
+            });
+    }, []);
+
     return (
         <>
             <PainelStyled>
-            <table>
+                <table>
                     <thead>
                         <tr>
                             <td>Codigo</td>
@@ -34,16 +39,24 @@ export default function Tabela() {
                         </tr>
                     </thead>
 
-                    {linha.map((linha) => (
-                        <tbody key={linha.cod} >
+                    {linha.map((item) => (
+                        <tbody key={item.id}>
                             <tr>
-                                <td>{linha.cod}</td>
-                                <td>{linha.nome}</td>
-                                <td>{linha.servico}</td>
-                                <td>{linha.data}</td>
-                                <td>{linha.status}</td>
-                                <td> <Link to="/servicoDetalhe"><Button style="azulTranparente" text="ver detalhes" /></Link> </td>
-                                <td> <Link to="/relatorios"><Button style="verdeTranparente" text="atender solicitação" /></Link> </td>
+                                <td>{item.id}</td>
+                                <td>{item.nome}</td>
+                                <td>{item.plano}</td>
+                                <td>{item.data}</td>
+                                <td>{item.status}</td>
+                                <td>
+                                    <Link to="/servicoDetalhe">
+                                        <Button style="azulTranparente" text="ver detalhes" />
+                                    </Link>
+                                </td>
+                                <td>
+                                    <Link to="/relatorios">
+                                        <Button style="verdeTranparente" text="atender solicitação" />
+                                    </Link>
+                                </td>
                             </tr>
                         </tbody>
                     ))}

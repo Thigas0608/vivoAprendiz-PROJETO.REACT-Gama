@@ -1,12 +1,12 @@
 import Footer from "../../components/Footer";
 import Formulario from "../../components/Formulario";
-import Header from "../../components/Header";
+import HeaderLogin from "../../components/HeaderLogin";
 import TextoPrincipal from "../../components/TextoPrincipal";
 
 export default function Login() {
   return (
     <>
-      <Header />
+      <HeaderLogin />
       <main className="flex">
         <TextoPrincipal
           titulo="Painel de Controle"

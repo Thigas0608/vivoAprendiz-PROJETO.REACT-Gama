@@ -17,8 +17,10 @@ export default function Button({ style,text }: ButtonProps) {
   else if(style == "cinza"){
     return <ButtonCinza>{text}</ButtonCinza>;
   }
-  else{
+  else if(style == "azul"){
     return <ButtonAzul>{text}</ButtonAzul>;
-    
+  }
+  else{
+    return null;
   }
 }
