@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+// Definindo estilos para o formulário
 export const Form = styled.form`
   width: 450px;
   background-color: #fff;
@@ -8,30 +9,31 @@ export const Form = styled.form`
   border: 1px solid #b4b4b4;
   border-radius: 5px;
   box-shadow: 0px 0px 10px 0px grey;
-  
-  
+
   input {
     width: 100%;
     margin-bottom: 15px;
     margin-top: 10px;
-    background-color: #F2F2F2;
+    background-color: #f2f2f2;
     height: 33px;
     border-radius: 5px;
     border: none;
     padding: 13px;
   }
 
-  label{
-    font-weight: bold
+  label {
+    font-weight: bold;
   }
 `;
 
+// Definindo estilos para o container
 export const Container = styled.div`
   width: 1200px;
   max-width: 100%;
   margin: 0 auto;
 
-  Button{
+  /* Estilos para botões no container */
+  Button {
     margin: 0px 5px;
   }
 `;

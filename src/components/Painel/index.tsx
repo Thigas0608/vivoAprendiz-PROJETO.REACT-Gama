@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Button from "../Button";
-import { PainelStyled } from "./style";
+import { PainelStyled } from "./style"; // Importação do componente de estilo PainelStyled
 import axios from "axios";
 
+// Definindo a interface para o objeto Order que será retornado pela API
 interface Order {
     id: number;
     nome: string;
@@ -12,18 +13,22 @@ interface Order {
     status: string;
 }
 
+// Componente Tabela
 export default function Tabela() {
+    // Definindo o estado "linha" para armazenar os dados da API
     const [linha, setLinha] = useState<Order[]>([]);
+
+    // Efeito que é executado quando o componente é montado
     useEffect(() => {
         axios
-            .get<Order[]>("http://localhost:3000/ordens") // Adicione a tipagem aqui
+            .get<Order[]>("http://localhost:3000/ordens")
             .then((response) => {
-                setLinha(response.data);
+                setLinha(response.data); // Armazena os dados da API no estado "linha"
             })
             .catch((error) => {
                 console.error("Erro ao buscar os dados da API:", error);
             });
-    }, []);
+    }, []); // O segundo argumento vazio indica que este efeito é executado uma vez, quando o componente é montado
 
     return (
         <>
@@ -48,14 +53,12 @@ export default function Tabela() {
                                 <td>{item.data}</td>
                                 <td>{item.status}</td>
                                 <td>
-                                    <Link to="/servicoDetalhe">
+                                    <Link to={`/servicoDetalhe/${item.id}`}>
                                         <Button style="azulTranparente" text="ver detalhes" />
                                     </Link>
                                 </td>
                                 <td>
-                                    <Link to="/relatorios">
-                                        <Button style="verdeTranparente" text="atender solicitação" />
-                                    </Link>
+                                    <Button style="verdeTranparente" text="atender solicitação"/>
                                 </td>
                             </tr>
                         </tbody>

@@ -11,9 +11,6 @@ export default function Header() {
           <Menu>
             <ul>
               <li>
-               <Link to="/">Início</Link>
-              </li>
-              <li>
               <Link to="/servico">Serviços</Link>
               </li>
               <li>

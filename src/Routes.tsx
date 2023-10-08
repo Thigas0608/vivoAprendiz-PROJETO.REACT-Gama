@@ -12,7 +12,7 @@ export default function Routes() {
     },
 
     {
-      path: "/servicoDetalhe",
+      path: "/servicoDetalhe/:id",
       element: <ServicoDetalhe/>,
     },
 
