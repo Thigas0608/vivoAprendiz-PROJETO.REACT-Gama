@@ -10,7 +10,6 @@ export const Form = styled.form`
   box-shadow: 0px 0px 10px 0px grey;
 
   label {
-    font-weight: bold;
   }
 
   input {

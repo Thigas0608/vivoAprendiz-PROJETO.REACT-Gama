@@ -1,14 +1,19 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Button from "../Button";
 import { Form, Container } from "./style";
 import { serviceFuncionarios, LoginPayload } from "../../services/funcionarios";
-import { useNavigate } from "react-router-dom"; // Importe useNavigate
+import { useNavigate } from "react-router-dom";
+
+// Importe os ícones ou coloque os SVGs aqui
+import EyeIconOpen from "../../assets/OpenPadlock.png";
+import EyeIconClosed from "../../assets/ClosedPadlock.png";
 
 export default function Formulario() {
   const [codigo, setCodigo] = useState("");
   const [senha, setSenha] = useState("");
   const [error, setError] = useState("");
-  const navigate = useNavigate(); // Use useNavigate para navegação
+  const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
   const logar = async () => {
     try {
@@ -17,16 +22,12 @@ export default function Formulario() {
         senha,
       };
 
-      // Chame a função de login do serviço e aguarde a resposta
       const response = await serviceFuncionarios.login(payload);
 
-      // Verifique a resposta para determinar o sucesso do login
       if (response.status === 200) {
-        // Sucesso no login
         console.log("Login bem-sucedido!");
-        navigate("/servico"); // Use navigate para redirecionar
+        navigate("/servico");
       } else {
-        // Algum problema no login, exiba uma mensagem de erro
         setError("Falha no login. Verifique suas credenciais.");
       }
     } catch (error) {
@@ -37,9 +38,11 @@ export default function Formulario() {
 
   const handleSubmit = (evento: { preventDefault: () => void; }) => {
     evento.preventDefault();
-
-    // Chame a função assíncrona logar aqui
     void logar();
+  };
+
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -55,12 +58,46 @@ export default function Formulario() {
           />
 
           <label>Senha</label>
-          <input
-            type="password"
-            value={senha}
-            onChange={(e) => setSenha(e.target.value)}
-            required
-          />
+          <div style={{ position: "relative" }}>
+            <input
+              type={showPassword ? "text" : "password"}
+              value={senha}
+              onChange={(e) => setSenha(e.target.value)}
+              required
+              style={{
+                paddingRight: "35px", // Espaço à direita para o ícone
+              }}
+            />
+            <button
+              type="button"
+              onClick={toggleShowPassword}
+              style={{
+                position: "absolute",
+                right: "5px",
+                top: "50%",
+                transform: "translateY(-50%)",
+                cursor: "pointer",
+                background: "transparent",
+                border: "none",
+                width: "35px", // Largura do ícone
+                height: "30px", // Altura do ícone
+              }}
+            >
+              {showPassword ? (
+                <img
+                  src={EyeIconOpen}
+                  alt="Ocultar senha"
+                  style={{ width: "100%", height: "100%" }}
+                />
+              ) : (
+                <img
+                  src={EyeIconClosed}
+                  alt="Mostrar senha"
+                  style={{ width: "100%", height: "100%" }}
+                />
+              )}
+            </button>
+          </div>
 
           {error && <div style={{ color: "red" }}>{error}</div>}
 

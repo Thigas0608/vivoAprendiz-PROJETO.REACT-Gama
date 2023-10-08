@@ -1,27 +1,30 @@
 import styled from "styled-components"
 
-export const PainelStyled = styled.section`
+export const PainelStyled = styled.main`
+
   width: auto;
-  height: auto;
   background-color: #fff;
+  border-radius: 15px;
   padding: 30px;
   margin: 50px;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px 0px grey;
+  box-shadow: 0px 4px 20px 0px #00000026;
 
-td {
+tr {
+  width: 100%;
+}
+
+td, tr {
   padding: 10px;
+  text-align: center;
+  border-bottom: 1.6px solid #b4b4b4;
 }
 
-thead{
-  border-bottom: 1px solid gray;
-}
-
-thead tr{
-    font-weight: bold;
+td{
+  font-weight: lighter;
 }
 
 table{
+  width: 100%;
   text-align: center;
   border-collapse: collapse;
 }
