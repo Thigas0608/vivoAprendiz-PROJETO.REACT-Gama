@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Button from "../Button";
 import { Form, Container } from "./style";
 import { serviceFuncionarios, LoginPayload } from "../../services/funcionarios";
